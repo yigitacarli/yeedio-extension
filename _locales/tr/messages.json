@@ -1,10 +1,83 @@
 {
     "extensionName": {
-        "message": "Yeedio: Video Hızı Kontrolü & Ses Yükseltici",
-        "description": "Eklentinin adı."
+        "message": "Yeedio: Video Hızı Kontrolü & Ses Yükseltici"
     },
     "extensionDescription": {
-        "message": "Video hızını 16x'e kadar, sesi %600'e kadar kontrol et. Basit, hızlı, hafif.",
-        "description": "Eklentinin kısa açıklaması (en fazla 132 karakter)."
+        "message": "Video hızını 16x'e, sesi %600'e kadar ayarlayın. Basit, hızlı ve hafif."
+    },
+    "settings": {
+        "message": "Ayarlar"
+    },
+    "speed": {
+        "message": "Hız"
+    },
+    "videoSpeed": {
+        "message": "Video hızı"
+    },
+    "volumeBoost": {
+        "message": "Ses Yükseltme"
+    },
+    "nowPlaying": {
+        "message": "Şu An Oynatılıyor"
+    },
+    "loading": {
+        "message": "Yükleniyor…"
+    },
+    "checkingPage": {
+        "message": "Sayfa kontrol ediliyor…"
+    },
+    "unknownTab": {
+        "message": "Bilinmeyen sekme"
+    },
+    "cannotAccessPage": {
+        "message": "Bu sayfaya erişilemiyor"
+    },
+    "noVideo": {
+        "message": "Bu sayfada video yok"
+    },
+    "resolution": {
+        "message": "Çözünürlük"
+    },
+    "detectingResolution": {
+        "message": "Çözünürlük algılanıyor…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio Ayarları"
+    },
+    "savedVideoSpeed": {
+        "message": "Kayıtlı video hızı (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Kayıtlı ses yükseltme (%0 – %600)"
+    },
+    "saveSettings": {
+        "message": "Ayarları kaydet"
+    },
+    "settingsSaved": {
+        "message": "Ayarlar kaydedildi."
+    },
+    "keyboardShortcuts": {
+        "message": "Klavye kısayolları"
+    },
+    "openYeedio": {
+        "message": "Yeedio'yu aç"
+    },
+    "adjustSpeed": {
+        "message": "hızı azalt / artır"
+    },
+    "customizeShortcuts": {
+        "message": "Ses kısayollarını buradan değiştirebilirsiniz:"
+    },
+    "increaseSpeedCommand": {
+        "message": "Video hızını artır (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Video hızını azalt (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Ses yükseltmeyi artır (+%10)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Ses yükseltmeyi azalt (-%10)"
     }
 }

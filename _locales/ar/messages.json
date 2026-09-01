@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: سرعة الفيديو ومضخم الصوت"
+    },
+    "extensionDescription": {
+        "message": "تحكم في سرعة الفيديو حتى 16x والصوت حتى 600%. بسيط وسريع وخفيف."
+    },
+    "settings": {
+        "message": "الإعدادات"
+    },
+    "speed": {
+        "message": "السرعة"
+    },
+    "videoSpeed": {
+        "message": "سرعة الفيديو"
+    },
+    "volumeBoost": {
+        "message": "تضخيم الصوت"
+    },
+    "nowPlaying": {
+        "message": "يعمل الآن"
+    },
+    "loading": {
+        "message": "جارٍ التحميل…"
+    },
+    "checkingPage": {
+        "message": "جارٍ فحص الصفحة…"
+    },
+    "unknownTab": {
+        "message": "علامة تبويب غير معروفة"
+    },
+    "cannotAccessPage": {
+        "message": "تعذر الوصول إلى هذه الصفحة"
+    },
+    "noVideo": {
+        "message": "لا يوجد فيديو في هذه الصفحة"
+    },
+    "resolution": {
+        "message": "الدقة"
+    },
+    "detectingResolution": {
+        "message": "جارٍ اكتشاف الدقة…"
+    },
+    "settingsTitle": {
+        "message": "إعدادات Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "سرعة الفيديو المحفوظة (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "مستوى الصوت المحفوظ (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "حفظ الإعدادات"
+    },
+    "settingsSaved": {
+        "message": "تم حفظ الإعدادات."
+    },
+    "keyboardShortcuts": {
+        "message": "اختصارات لوحة المفاتيح"
+    },
+    "openYeedio": {
+        "message": "فتح Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "خفض / زيادة السرعة"
+    },
+    "customizeShortcuts": {
+        "message": "خصص اختصارات الصوت في"
+    },
+    "increaseSpeedCommand": {
+        "message": "زيادة سرعة الفيديو (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "خفض سرعة الفيديو (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "زيادة الصوت (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "خفض الصوت (-10%)"
+    }
+}

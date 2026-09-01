@@ -1,10 +1,83 @@
 {
     "extensionName": {
-        "message": "Yeedio: Control de Velocidad y Refuerzo de Volumen",
-        "description": "El nombre de la extensión."
+        "message": "Yeedio: Velocidad de Video y Refuerzo de Volumen"
     },
     "extensionDescription": {
-        "message": "Controla la velocidad del vídeo hasta 16x y sube el volumen hasta 600%. Simple, rápido, ligero.",
-        "description": "Una breve descripción de la extensión (máx. 132 caracteres)."
+        "message": "Controla la velocidad hasta 16x y aumenta el volumen hasta 600%. Simple, rápido y ligero."
+    },
+    "settings": {
+        "message": "Ajustes"
+    },
+    "speed": {
+        "message": "Velocidad"
+    },
+    "videoSpeed": {
+        "message": "Velocidad del video"
+    },
+    "volumeBoost": {
+        "message": "Refuerzo de Volumen"
+    },
+    "nowPlaying": {
+        "message": "Reproduciendo Ahora"
+    },
+    "loading": {
+        "message": "Cargando…"
+    },
+    "checkingPage": {
+        "message": "Comprobando la página…"
+    },
+    "unknownTab": {
+        "message": "Pestaña desconocida"
+    },
+    "cannotAccessPage": {
+        "message": "No se puede acceder a esta página"
+    },
+    "noVideo": {
+        "message": "No hay video en esta página"
+    },
+    "resolution": {
+        "message": "Resolución"
+    },
+    "detectingResolution": {
+        "message": "Detectando resolución…"
+    },
+    "settingsTitle": {
+        "message": "Ajustes de Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Velocidad guardada (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Volumen guardado (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Guardar ajustes"
+    },
+    "settingsSaved": {
+        "message": "Ajustes guardados."
+    },
+    "keyboardShortcuts": {
+        "message": "Atajos de teclado"
+    },
+    "openYeedio": {
+        "message": "abrir Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "reducir / aumentar velocidad"
+    },
+    "customizeShortcuts": {
+        "message": "Personaliza los atajos de volumen en"
+    },
+    "increaseSpeedCommand": {
+        "message": "Aumentar velocidad del video (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Reducir velocidad del video (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Aumentar refuerzo de volumen (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Reducir refuerzo de volumen (-10%)"
     }
 }

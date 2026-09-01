@@ -1,5 +1,6 @@
 // popup.js — Yeedio v2
 document.addEventListener('DOMContentLoaded', () => {
+    const { t } = window.yeedioI18n;
     const speedSlider = document.getElementById('speed-slider');
     const speedInput = document.getElementById('speed-input');
     const speedDown = document.getElementById('speed-down');
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activeTabTitle.textContent = tab.title;
             activeTabTitle.title = tab.title;
         } else {
-            activeTabTitle.textContent = 'Unknown Tab';
+            activeTabTitle.textContent = t('unknownTab');
         }
 
         if (tab.favIconUrl && /^https?:/.test(tab.favIconUrl)) {
@@ -57,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ensureContentScript(currentTabId, (ok) => {
             if (!ok) {
-                setStatus('Cannot access this page', 'err');
+                setStatus(t('cannotAccessPage'), 'err');
                 return;
             }
             chrome.tabs.sendMessage(currentTabId, { type: 'GET_STATE' }, (response) => {
                 if (chrome.runtime.lastError || !response) {
-                    setStatus('No video on this page', 'warn');
+                    setStatus(t('noVideo'), 'warn');
                     return;
                 }
                 if (response.speed !== undefined) updateSpeedUI(clampSpeed(response.speed));
@@ -141,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'UPDATE_SETTINGS', speed, volume },
             (response) => {
                 if (chrome.runtime.lastError || !response) {
-                    setStatus('No video on this page', 'warn');
+                    setStatus(t('noVideo'), 'warn');
                     return;
                 }
                 showResolution(response.resolution);
@@ -151,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showResolution(resolution) {
         if (resolution && resolution.width > 0) {
-            setStatus(`Resolution: ${resolution.width}\u00D7${resolution.height}`, 'ok');
+            setStatus(`${t('resolution')}: ${resolution.width}\u00D7${resolution.height}`, 'ok');
         } else {
-            setStatus('Detecting resolution\u2026', 'warn');
+            setStatus(t('detectingResolution'), 'warn');
         }
     }
 

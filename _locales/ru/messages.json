@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Скорость Видео и Усилитель Громкости"
+    },
+    "extensionDescription": {
+        "message": "Скорость видео до 16x и громкость до 600%. Просто, быстро и легко."
+    },
+    "settings": {
+        "message": "Настройки"
+    },
+    "speed": {
+        "message": "Скорость"
+    },
+    "videoSpeed": {
+        "message": "Скорость видео"
+    },
+    "volumeBoost": {
+        "message": "Усиление Громкости"
+    },
+    "nowPlaying": {
+        "message": "Сейчас Играет"
+    },
+    "loading": {
+        "message": "Загрузка…"
+    },
+    "checkingPage": {
+        "message": "Проверка страницы…"
+    },
+    "unknownTab": {
+        "message": "Неизвестная вкладка"
+    },
+    "cannotAccessPage": {
+        "message": "Нет доступа к странице"
+    },
+    "noVideo": {
+        "message": "На странице нет видео"
+    },
+    "resolution": {
+        "message": "Разрешение"
+    },
+    "detectingResolution": {
+        "message": "Определение разрешения…"
+    },
+    "settingsTitle": {
+        "message": "Настройки Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Сохранённая скорость (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Сохранённая громкость (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Сохранить"
+    },
+    "settingsSaved": {
+        "message": "Настройки сохранены."
+    },
+    "keyboardShortcuts": {
+        "message": "Горячие клавиши"
+    },
+    "openYeedio": {
+        "message": "открыть Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "уменьшить / увеличить скорость"
+    },
+    "customizeShortcuts": {
+        "message": "Настройте клавиши громкости на"
+    },
+    "increaseSpeedCommand": {
+        "message": "Увеличить скорость (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Уменьшить скорость (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Увеличить громкость (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Уменьшить громкость (-10%)"
+    }
+}

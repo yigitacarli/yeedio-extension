@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: वीडियो स्पीड और वॉल्यूम बूस्टर"
+    },
+    "extensionDescription": {
+        "message": "वीडियो गति 16x और वॉल्यूम 600% तक कंट्रोल करें। सरल, तेज़ और हल्का।"
+    },
+    "settings": {
+        "message": "सेटिंग्स"
+    },
+    "speed": {
+        "message": "गति"
+    },
+    "videoSpeed": {
+        "message": "वीडियो गति"
+    },
+    "volumeBoost": {
+        "message": "वॉल्यूम बूस्ट"
+    },
+    "nowPlaying": {
+        "message": "अभी चल रहा है"
+    },
+    "loading": {
+        "message": "लोड हो रहा है…"
+    },
+    "checkingPage": {
+        "message": "पेज जाँचा जा रहा है…"
+    },
+    "unknownTab": {
+        "message": "अज्ञात टैब"
+    },
+    "cannotAccessPage": {
+        "message": "इस पेज को ऐक्सेस नहीं कर सकते"
+    },
+    "noVideo": {
+        "message": "इस पेज पर कोई वीडियो नहीं"
+    },
+    "resolution": {
+        "message": "रिज़ॉल्यूशन"
+    },
+    "detectingResolution": {
+        "message": "रिज़ॉल्यूशन पहचाना जा रहा है…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio सेटिंग्स"
+    },
+    "savedVideoSpeed": {
+        "message": "सहेजी गई वीडियो गति (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "सहेजा गया वॉल्यूम (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "सेटिंग्स सहेजें"
+    },
+    "settingsSaved": {
+        "message": "सेटिंग्स सहेजी गईं।"
+    },
+    "keyboardShortcuts": {
+        "message": "कीबोर्ड शॉर्टकट"
+    },
+    "openYeedio": {
+        "message": "Yeedio खोलें"
+    },
+    "adjustSpeed": {
+        "message": "गति घटाएँ / बढ़ाएँ"
+    },
+    "customizeShortcuts": {
+        "message": "वॉल्यूम शॉर्टकट यहाँ बदलें:"
+    },
+    "increaseSpeedCommand": {
+        "message": "वीडियो गति बढ़ाएँ (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "वीडियो गति घटाएँ (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "वॉल्यूम बढ़ाएँ (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "वॉल्यूम घटाएँ (-10%)"
+    }
+}

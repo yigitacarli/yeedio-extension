@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Tốc độ Video & Tăng Âm lượng"
+    },
+    "extensionDescription": {
+        "message": "Điều chỉnh tốc độ video đến 16x và âm lượng đến 600%. Đơn giản, nhanh và nhẹ."
+    },
+    "settings": {
+        "message": "Cài đặt"
+    },
+    "speed": {
+        "message": "Tốc độ"
+    },
+    "videoSpeed": {
+        "message": "Tốc độ video"
+    },
+    "volumeBoost": {
+        "message": "Tăng Âm lượng"
+    },
+    "nowPlaying": {
+        "message": "Đang Phát"
+    },
+    "loading": {
+        "message": "Đang tải…"
+    },
+    "checkingPage": {
+        "message": "Đang kiểm tra trang…"
+    },
+    "unknownTab": {
+        "message": "Tab không xác định"
+    },
+    "cannotAccessPage": {
+        "message": "Không thể truy cập trang này"
+    },
+    "noVideo": {
+        "message": "Không có video trên trang này"
+    },
+    "resolution": {
+        "message": "Độ phân giải"
+    },
+    "detectingResolution": {
+        "message": "Đang phát hiện độ phân giải…"
+    },
+    "settingsTitle": {
+        "message": "Cài đặt Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Tốc độ video đã lưu (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Âm lượng đã lưu (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Lưu cài đặt"
+    },
+    "settingsSaved": {
+        "message": "Đã lưu cài đặt."
+    },
+    "keyboardShortcuts": {
+        "message": "Phím tắt"
+    },
+    "openYeedio": {
+        "message": "mở Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "giảm / tăng tốc độ"
+    },
+    "customizeShortcuts": {
+        "message": "Tùy chỉnh phím tắt âm lượng tại"
+    },
+    "increaseSpeedCommand": {
+        "message": "Tăng tốc độ video (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Giảm tốc độ video (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Tăng âm lượng (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Giảm âm lượng (-10%)"
+    }
+}

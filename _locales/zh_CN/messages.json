@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio：视频速度与音量增强器"
+    },
+    "extensionDescription": {
+        "message": "视频速度最高16倍，音量最高600%。简单、快速且轻量。"
+    },
+    "settings": {
+        "message": "设置"
+    },
+    "speed": {
+        "message": "速度"
+    },
+    "videoSpeed": {
+        "message": "视频速度"
+    },
+    "volumeBoost": {
+        "message": "音量增强"
+    },
+    "nowPlaying": {
+        "message": "正在播放"
+    },
+    "loading": {
+        "message": "加载中…"
+    },
+    "checkingPage": {
+        "message": "正在检查页面…"
+    },
+    "unknownTab": {
+        "message": "未知标签页"
+    },
+    "cannotAccessPage": {
+        "message": "无法访问此页面"
+    },
+    "noVideo": {
+        "message": "此页面没有视频"
+    },
+    "resolution": {
+        "message": "分辨率"
+    },
+    "detectingResolution": {
+        "message": "正在检测分辨率…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio 设置"
+    },
+    "savedVideoSpeed": {
+        "message": "已保存的视频速度 (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "已保存的音量 (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "保存设置"
+    },
+    "settingsSaved": {
+        "message": "设置已保存。"
+    },
+    "keyboardShortcuts": {
+        "message": "键盘快捷键"
+    },
+    "openYeedio": {
+        "message": "打开 Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "降低 / 提高速度"
+    },
+    "customizeShortcuts": {
+        "message": "在此设置音量快捷键："
+    },
+    "increaseSpeedCommand": {
+        "message": "提高视频速度 (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "降低视频速度 (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "提高音量增强 (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "降低音量增强 (-10%)"
+    }
+}

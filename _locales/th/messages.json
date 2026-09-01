@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: ควบคุมความเร็ววิดีโอและเพิ่มเสียง"
+    },
+    "extensionDescription": {
+        "message": "ปรับความเร็ววิดีโอได้ถึง 16x และเสียงถึง 600% ใช้ง่าย รวดเร็ว และเบา"
+    },
+    "settings": {
+        "message": "การตั้งค่า"
+    },
+    "speed": {
+        "message": "ความเร็ว"
+    },
+    "videoSpeed": {
+        "message": "ความเร็ววิดีโอ"
+    },
+    "volumeBoost": {
+        "message": "เพิ่มเสียง"
+    },
+    "nowPlaying": {
+        "message": "กำลังเล่น"
+    },
+    "loading": {
+        "message": "กำลังโหลด…"
+    },
+    "checkingPage": {
+        "message": "กำลังตรวจสอบหน้า…"
+    },
+    "unknownTab": {
+        "message": "แท็บที่ไม่รู้จัก"
+    },
+    "cannotAccessPage": {
+        "message": "ไม่สามารถเข้าถึงหน้านี้"
+    },
+    "noVideo": {
+        "message": "ไม่มีวิดีโอในหน้านี้"
+    },
+    "resolution": {
+        "message": "ความละเอียด"
+    },
+    "detectingResolution": {
+        "message": "กำลังตรวจหาความละเอียด…"
+    },
+    "settingsTitle": {
+        "message": "การตั้งค่า Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "ความเร็ววิดีโอที่บันทึก (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "ระดับเสียงที่บันทึก (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "บันทึกการตั้งค่า"
+    },
+    "settingsSaved": {
+        "message": "บันทึกการตั้งค่าแล้ว"
+    },
+    "keyboardShortcuts": {
+        "message": "แป้นพิมพ์ลัด"
+    },
+    "openYeedio": {
+        "message": "เปิด Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "ลด / เพิ่มความเร็ว"
+    },
+    "customizeShortcuts": {
+        "message": "ปรับแต่งปุ่มลัดเสียงที่"
+    },
+    "increaseSpeedCommand": {
+        "message": "เพิ่มความเร็ววิดีโอ (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "ลดความเร็ววิดีโอ (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "เพิ่มระดับเสียง (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "ลดระดับเสียง (-10%)"
+    }
+}

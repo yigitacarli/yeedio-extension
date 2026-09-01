@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Videohastighet & Volymförstärkare"
+    },
+    "extensionDescription": {
+        "message": "Styr videohastighet upp till 16x och volym upp till 600%. Enkelt, snabbt och lätt."
+    },
+    "settings": {
+        "message": "Inställningar"
+    },
+    "speed": {
+        "message": "Hastighet"
+    },
+    "videoSpeed": {
+        "message": "Videohastighet"
+    },
+    "volumeBoost": {
+        "message": "Volymförstärkning"
+    },
+    "nowPlaying": {
+        "message": "Spelas Nu"
+    },
+    "loading": {
+        "message": "Laddar…"
+    },
+    "checkingPage": {
+        "message": "Kontrollerar sidan…"
+    },
+    "unknownTab": {
+        "message": "Okänd flik"
+    },
+    "cannotAccessPage": {
+        "message": "Kan inte komma åt sidan"
+    },
+    "noVideo": {
+        "message": "Ingen video på sidan"
+    },
+    "resolution": {
+        "message": "Upplösning"
+    },
+    "detectingResolution": {
+        "message": "Identifierar upplösning…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio-inställningar"
+    },
+    "savedVideoSpeed": {
+        "message": "Sparad videohastighet (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Sparad volym (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Spara inställningar"
+    },
+    "settingsSaved": {
+        "message": "Inställningarna har sparats."
+    },
+    "keyboardShortcuts": {
+        "message": "Kortkommandon"
+    },
+    "openYeedio": {
+        "message": "öppna Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "minska / öka hastighet"
+    },
+    "customizeShortcuts": {
+        "message": "Anpassa volymkommandon på"
+    },
+    "increaseSpeedCommand": {
+        "message": "Öka videohastigheten (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Minska videohastigheten (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Öka volymen (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Minska volymen (-10%)"
+    }
+}

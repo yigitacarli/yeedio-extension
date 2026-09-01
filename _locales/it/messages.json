@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Velocità Video e Amplificatore Volume"
+    },
+    "extensionDescription": {
+        "message": "Controlla la velocità fino a 16x e aumenta il volume fino al 600%. Semplice, veloce e leggero."
+    },
+    "settings": {
+        "message": "Impostazioni"
+    },
+    "speed": {
+        "message": "Velocità"
+    },
+    "videoSpeed": {
+        "message": "Velocità video"
+    },
+    "volumeBoost": {
+        "message": "Amplificazione Volume"
+    },
+    "nowPlaying": {
+        "message": "In Riproduzione"
+    },
+    "loading": {
+        "message": "Caricamento…"
+    },
+    "checkingPage": {
+        "message": "Controllo pagina…"
+    },
+    "unknownTab": {
+        "message": "Scheda sconosciuta"
+    },
+    "cannotAccessPage": {
+        "message": "Impossibile accedere a questa pagina"
+    },
+    "noVideo": {
+        "message": "Nessun video in questa pagina"
+    },
+    "resolution": {
+        "message": "Risoluzione"
+    },
+    "detectingResolution": {
+        "message": "Rilevamento risoluzione…"
+    },
+    "settingsTitle": {
+        "message": "Impostazioni Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Velocità salvata (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Volume salvato (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Salva impostazioni"
+    },
+    "settingsSaved": {
+        "message": "Impostazioni salvate."
+    },
+    "keyboardShortcuts": {
+        "message": "Scorciatoie da tastiera"
+    },
+    "openYeedio": {
+        "message": "apri Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "riduci / aumenta velocità"
+    },
+    "customizeShortcuts": {
+        "message": "Personalizza le scorciatoie del volume in"
+    },
+    "increaseSpeedCommand": {
+        "message": "Aumenta velocità video (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Riduci velocità video (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Aumenta volume (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Riduci volume (-10%)"
+    }
+}

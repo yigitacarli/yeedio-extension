@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Videosnelheid & Volumeversterker"
+    },
+    "extensionDescription": {
+        "message": "Regel videosnelheid tot 16x en versterk volume tot 600%. Eenvoudig, snel en lichtgewicht."
+    },
+    "settings": {
+        "message": "Instellingen"
+    },
+    "speed": {
+        "message": "Snelheid"
+    },
+    "videoSpeed": {
+        "message": "Videosnelheid"
+    },
+    "volumeBoost": {
+        "message": "Volumeversterking"
+    },
+    "nowPlaying": {
+        "message": "Wordt Nu Afgespeeld"
+    },
+    "loading": {
+        "message": "Laden…"
+    },
+    "checkingPage": {
+        "message": "Pagina controleren…"
+    },
+    "unknownTab": {
+        "message": "Onbekend tabblad"
+    },
+    "cannotAccessPage": {
+        "message": "Geen toegang tot deze pagina"
+    },
+    "noVideo": {
+        "message": "Geen video op deze pagina"
+    },
+    "resolution": {
+        "message": "Resolutie"
+    },
+    "detectingResolution": {
+        "message": "Resolutie detecteren…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio-instellingen"
+    },
+    "savedVideoSpeed": {
+        "message": "Opgeslagen videosnelheid (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Opgeslagen volume (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Instellingen opslaan"
+    },
+    "settingsSaved": {
+        "message": "Instellingen opgeslagen."
+    },
+    "keyboardShortcuts": {
+        "message": "Sneltoetsen"
+    },
+    "openYeedio": {
+        "message": "Yeedio openen"
+    },
+    "adjustSpeed": {
+        "message": "snelheid verlagen / verhogen"
+    },
+    "customizeShortcuts": {
+        "message": "Pas volumesneltoetsen aan op"
+    },
+    "increaseSpeedCommand": {
+        "message": "Videosnelheid verhogen (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Videosnelheid verlagen (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Volume verhogen (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Volume verlagen (-10%)"
+    }
+}

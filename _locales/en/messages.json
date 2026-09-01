@@ -1,10 +1,83 @@
 {
     "extensionName": {
-        "message": "Yeedio: Video Speed Controller & Volume Booster",
-        "description": "The name of the extension."
+        "message": "Yeedio: Video Speed Controller & Volume Booster"
     },
     "extensionDescription": {
-        "message": "Control video speed up to 16x and boost volume up to 600%. Simple, fast, lightweight.",
-        "description": "A short description of the extension (max 132 chars)."
+        "message": "Control video speed up to 16x and boost volume up to 600%. Simple, fast, lightweight."
+    },
+    "settings": {
+        "message": "Settings"
+    },
+    "speed": {
+        "message": "Speed"
+    },
+    "videoSpeed": {
+        "message": "Video speed"
+    },
+    "volumeBoost": {
+        "message": "Volume Boost"
+    },
+    "nowPlaying": {
+        "message": "Now Playing"
+    },
+    "loading": {
+        "message": "Loading…"
+    },
+    "checkingPage": {
+        "message": "Checking page…"
+    },
+    "unknownTab": {
+        "message": "Unknown tab"
+    },
+    "cannotAccessPage": {
+        "message": "Cannot access this page"
+    },
+    "noVideo": {
+        "message": "No video on this page"
+    },
+    "resolution": {
+        "message": "Resolution"
+    },
+    "detectingResolution": {
+        "message": "Detecting resolution…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio Settings"
+    },
+    "savedVideoSpeed": {
+        "message": "Saved video speed (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Saved volume boost (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Save settings"
+    },
+    "settingsSaved": {
+        "message": "Settings saved."
+    },
+    "keyboardShortcuts": {
+        "message": "Keyboard shortcuts"
+    },
+    "openYeedio": {
+        "message": "open Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "decrease / increase speed"
+    },
+    "customizeShortcuts": {
+        "message": "You can customize volume shortcuts at"
+    },
+    "increaseSpeedCommand": {
+        "message": "Increase video speed (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Decrease video speed (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Increase volume boost (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Decrease volume boost (-10%)"
     }
 }

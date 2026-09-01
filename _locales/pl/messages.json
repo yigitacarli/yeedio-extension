@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Prędkość Wideo i Wzmacniacz Głośności"
+    },
+    "extensionDescription": {
+        "message": "Steruj prędkością do 16x i głośnością do 600%. Prosto, szybko i lekko."
+    },
+    "settings": {
+        "message": "Ustawienia"
+    },
+    "speed": {
+        "message": "Prędkość"
+    },
+    "videoSpeed": {
+        "message": "Prędkość wideo"
+    },
+    "volumeBoost": {
+        "message": "Wzmocnienie Głośności"
+    },
+    "nowPlaying": {
+        "message": "Teraz Odtwarzane"
+    },
+    "loading": {
+        "message": "Ładowanie…"
+    },
+    "checkingPage": {
+        "message": "Sprawdzanie strony…"
+    },
+    "unknownTab": {
+        "message": "Nieznana karta"
+    },
+    "cannotAccessPage": {
+        "message": "Brak dostępu do tej strony"
+    },
+    "noVideo": {
+        "message": "Brak wideo na tej stronie"
+    },
+    "resolution": {
+        "message": "Rozdzielczość"
+    },
+    "detectingResolution": {
+        "message": "Wykrywanie rozdzielczości…"
+    },
+    "settingsTitle": {
+        "message": "Ustawienia Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Zapisana prędkość (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Zapisana głośność (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Zapisz ustawienia"
+    },
+    "settingsSaved": {
+        "message": "Ustawienia zapisane."
+    },
+    "keyboardShortcuts": {
+        "message": "Skróty klawiaturowe"
+    },
+    "openYeedio": {
+        "message": "otwórz Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "zmniejsz / zwiększ prędkość"
+    },
+    "customizeShortcuts": {
+        "message": "Dostosuj skróty głośności na"
+    },
+    "increaseSpeedCommand": {
+        "message": "Zwiększ prędkość (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Zmniejsz prędkość (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Zwiększ głośność (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Zmniejsz głośność (-10%)"
+    }
+}

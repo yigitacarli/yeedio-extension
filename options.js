@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const { t } = window.yeedioI18n;
     const defaultSpeedInput = document.getElementById('default-speed');
     const defaultVolumeInput = document.getElementById('default-volume');
     const saveBtn = document.getElementById('save-btn');
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             speed,
             volume
         }, () => {
-            statusDiv.textContent = 'Settings saved.';
+            statusDiv.textContent = t('settingsSaved');
             setTimeout(() => { statusDiv.textContent = ''; }, 2000);
         });
     });

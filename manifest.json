@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "__MSG_extensionName__",
     "short_name": "Yeedio",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "description": "__MSG_extensionDescription__",
     "default_locale": "en",
     "minimum_chrome_version": "102",
@@ -54,19 +54,19 @@
             "suggested_key": {
                 "default": "Alt+Shift+Period"
             },
-            "description": "Increase video speed (+0.25x)"
+            "description": "__MSG_increaseSpeedCommand__"
         },
         "decrease-speed": {
             "suggested_key": {
                 "default": "Alt+Shift+Comma"
             },
-            "description": "Decrease video speed (-0.25x)"
+            "description": "__MSG_decreaseSpeedCommand__"
         },
         "boost-volume-up": {
-            "description": "Increase volume boost (+10%)"
+            "description": "__MSG_increaseVolumeCommand__"
         },
         "boost-volume-down": {
-            "description": "Decrease volume boost (-10%)"
+            "description": "__MSG_decreaseVolumeCommand__"
         }
     },
     "options_page": "options.html"

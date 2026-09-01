@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Pengatur Kecepatan Video & Penguat Volume"
+    },
+    "extensionDescription": {
+        "message": "Atur kecepatan video hingga 16x dan volume hingga 600%. Sederhana, cepat, dan ringan."
+    },
+    "settings": {
+        "message": "Setelan"
+    },
+    "speed": {
+        "message": "Kecepatan"
+    },
+    "videoSpeed": {
+        "message": "Kecepatan video"
+    },
+    "volumeBoost": {
+        "message": "Penguat Volume"
+    },
+    "nowPlaying": {
+        "message": "Sedang Diputar"
+    },
+    "loading": {
+        "message": "Memuat…"
+    },
+    "checkingPage": {
+        "message": "Memeriksa halaman…"
+    },
+    "unknownTab": {
+        "message": "Tab tidak dikenal"
+    },
+    "cannotAccessPage": {
+        "message": "Tidak dapat mengakses halaman ini"
+    },
+    "noVideo": {
+        "message": "Tidak ada video di halaman ini"
+    },
+    "resolution": {
+        "message": "Resolusi"
+    },
+    "detectingResolution": {
+        "message": "Mendeteksi resolusi…"
+    },
+    "settingsTitle": {
+        "message": "Setelan Yeedio"
+    },
+    "savedVideoSpeed": {
+        "message": "Kecepatan video tersimpan (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Volume tersimpan (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Simpan setelan"
+    },
+    "settingsSaved": {
+        "message": "Setelan disimpan."
+    },
+    "keyboardShortcuts": {
+        "message": "Pintasan keyboard"
+    },
+    "openYeedio": {
+        "message": "buka Yeedio"
+    },
+    "adjustSpeed": {
+        "message": "kurangi / tambah kecepatan"
+    },
+    "customizeShortcuts": {
+        "message": "Sesuaikan pintasan volume di"
+    },
+    "increaseSpeedCommand": {
+        "message": "Tambah kecepatan video (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Kurangi kecepatan video (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Tambah penguat volume (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Kurangi penguat volume (-10%)"
+    }
+}

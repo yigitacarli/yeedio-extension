@@ -11,6 +11,7 @@ Yeedio is a Chrome extension for changing HTML5 video speed and boosting volume.
 - Shows the active video's native resolution.
 - Remembers the last speed and volume values.
 - Provides keyboard shortcuts for speed and volume changes.
+- Localizes the popup, settings page, and Chrome commands in 19 languages.
 
 Yeedio cannot run on Chrome's internal pages or the Chrome Web Store. A few sites use custom or protected media players that may not work with Web Audio volume boosting.
 
@@ -34,6 +35,10 @@ Chrome disables file-page access by default. To use Yeedio with local video file
 | Increase speed | `Alt+Shift+.` |
 
 Volume shortcuts are available but unassigned by default. All shortcuts can be changed at `chrome://extensions/shortcuts`.
+
+## Languages
+
+Arabic, Chinese (Simplified), Dutch, English, French, German, Hindi, Indonesian, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Russian, Spanish, Swedish, Thai, Turkish, and Vietnamese.
 
 ## Privacy
 

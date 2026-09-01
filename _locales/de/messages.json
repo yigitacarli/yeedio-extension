@@ -1,10 +1,83 @@
 {
     "extensionName": {
-        "message": "Yeedio: Videogeschwindigkeit & Lautstärke-Booster",
-        "description": "Der Name der Erweiterung."
+        "message": "Yeedio: Videogeschwindigkeit & Lautstärke-Booster"
     },
     "extensionDescription": {
-        "message": "Videogeschwindigkeit bis 16x und Lautstärke bis 600% steuern. Einfach, schnell, leicht.",
-        "description": "Eine kurze Beschreibung der Erweiterung (max. 132 Zeichen)."
+        "message": "Videogeschwindigkeit bis 16x und Lautstärke bis 600% steuern. Einfach, schnell und leicht."
+    },
+    "settings": {
+        "message": "Einstellungen"
+    },
+    "speed": {
+        "message": "Geschwindigkeit"
+    },
+    "videoSpeed": {
+        "message": "Videogeschwindigkeit"
+    },
+    "volumeBoost": {
+        "message": "Lautstärke-Boost"
+    },
+    "nowPlaying": {
+        "message": "Aktuelle Wiedergabe"
+    },
+    "loading": {
+        "message": "Laden…"
+    },
+    "checkingPage": {
+        "message": "Seite wird geprüft…"
+    },
+    "unknownTab": {
+        "message": "Unbekannter Tab"
+    },
+    "cannotAccessPage": {
+        "message": "Auf diese Seite kann nicht zugegriffen werden"
+    },
+    "noVideo": {
+        "message": "Kein Video auf dieser Seite"
+    },
+    "resolution": {
+        "message": "Auflösung"
+    },
+    "detectingResolution": {
+        "message": "Auflösung wird erkannt…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio-Einstellungen"
+    },
+    "savedVideoSpeed": {
+        "message": "Gespeicherte Videogeschwindigkeit (0,25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "Gespeicherter Lautstärke-Boost (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "Einstellungen speichern"
+    },
+    "settingsSaved": {
+        "message": "Einstellungen gespeichert."
+    },
+    "keyboardShortcuts": {
+        "message": "Tastenkürzel"
+    },
+    "openYeedio": {
+        "message": "Yeedio öffnen"
+    },
+    "adjustSpeed": {
+        "message": "Geschwindigkeit verringern / erhöhen"
+    },
+    "customizeShortcuts": {
+        "message": "Lautstärke-Tastenkürzel anpassen unter"
+    },
+    "increaseSpeedCommand": {
+        "message": "Videogeschwindigkeit erhöhen (+0,25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "Videogeschwindigkeit verringern (-0,25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "Lautstärke-Boost erhöhen (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "Lautstärke-Boost verringern (-10%)"
     }
 }

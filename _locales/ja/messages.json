@@ -1,0 +1,83 @@
+{
+    "extensionName": {
+        "message": "Yeedio: 動画速度・音量ブースター"
+    },
+    "extensionDescription": {
+        "message": "動画速度を16倍、音量を600%まで調整。シンプルで高速、軽量です。"
+    },
+    "settings": {
+        "message": "設定"
+    },
+    "speed": {
+        "message": "速度"
+    },
+    "videoSpeed": {
+        "message": "動画の速度"
+    },
+    "volumeBoost": {
+        "message": "音量ブースト"
+    },
+    "nowPlaying": {
+        "message": "再生中"
+    },
+    "loading": {
+        "message": "読み込み中…"
+    },
+    "checkingPage": {
+        "message": "ページを確認中…"
+    },
+    "unknownTab": {
+        "message": "不明なタブ"
+    },
+    "cannotAccessPage": {
+        "message": "このページにアクセスできません"
+    },
+    "noVideo": {
+        "message": "このページに動画がありません"
+    },
+    "resolution": {
+        "message": "解像度"
+    },
+    "detectingResolution": {
+        "message": "解像度を検出中…"
+    },
+    "settingsTitle": {
+        "message": "Yeedio 設定"
+    },
+    "savedVideoSpeed": {
+        "message": "保存した動画速度 (0.25x – 16x)"
+    },
+    "savedVolumeBoost": {
+        "message": "保存した音量 (0% – 600%)"
+    },
+    "saveSettings": {
+        "message": "設定を保存"
+    },
+    "settingsSaved": {
+        "message": "設定を保存しました。"
+    },
+    "keyboardShortcuts": {
+        "message": "キーボードショートカット"
+    },
+    "openYeedio": {
+        "message": "Yeedio を開く"
+    },
+    "adjustSpeed": {
+        "message": "速度を下げる / 上げる"
+    },
+    "customizeShortcuts": {
+        "message": "音量ショートカットの設定:"
+    },
+    "increaseSpeedCommand": {
+        "message": "動画速度を上げる (+0.25x)"
+    },
+    "decreaseSpeedCommand": {
+        "message": "動画速度を下げる (-0.25x)"
+    },
+    "increaseVolumeCommand": {
+        "message": "音量ブーストを上げる (+10%)"
+    },
+    "decreaseVolumeCommand": {
+        "message": "音量ブーストを下げる (-10%)"
+    }
+}
