@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Video Speed Controller & Volume Booster",
+        "description": "The name of the extension."
+    },
+    "extensionDescription": {
+        "message": "Control video speed up to 16x and boost volume up to 600%. Simple, fast, lightweight.",
+        "description": "A short description of the extension (max 132 chars)."
+    }
+}

@@ -1,233 +1,233 @@
-// content.js
 (() => {
-    // SECURITY SHIELD: Guarantee this script NEVER executes twice per frame
+    'use strict';
+
     if (window.__yeedioInjected) return;
     window.__yeedioInjected = true;
 
-    let currentVideo = null;
-    let audioCtx = null;
-    let gainNode = null;
-    let sourceNode = null;
-    let lastVolume = 100;
-    let lastSpeed = 1.0;
+    const SPEED_MIN = 0.25;
+    const SPEED_MAX = 16.0;
+    const VOLUME_MAX = 600;
 
-    // Interval for YouTube Override since YouTube likes to reset playback rate randomly.
-    let speedEnforcerInterval = null;
+    let settings = { speed: 1.0, volume: 100 };
+    let audioCtx = null;
+    let activeVideo = null;
+    let enforceTimer = null;
+    let settingRateProgrammatically = false;
+
+    // A media element can only be connected to one MediaElementSourceNode.
+    const videoGraphs = new WeakMap();
+
+    function clamp(val, min, max) {
+        return Math.min(Math.max(val, min), max);
+    }
 
     function findVideo() {
         const videos = Array.from(document.querySelectorAll('video'));
         if (videos.length === 0) return null;
 
-        // Priority 1: Currently playing video
-        const playingVideos = videos.filter(v => !v.paused && !v.ended && v.readyState > 2);
-        if (playingVideos.length > 0) {
-            return playingVideos.reduce((largest, v) => {
-                return (v.clientWidth * v.clientHeight > largest.clientWidth * largest.clientHeight) ? v : largest;
-            });
-        }
+        const score = (v) => {
+            const area = v.clientWidth * v.clientHeight;
+            const playing = !v.paused && !v.ended && v.readyState > 2 ? 1e9 : 0;
+            const visible = v.clientWidth > 0 && v.clientHeight > 0 ? 1 : 0;
+            return playing + (visible ? area : 0);
+        };
 
-        // Priority 2: Largest video by area
-        return videos.reduce((largest, v) => {
-            return (v.clientWidth * v.clientHeight > largest.clientWidth * largest.clientHeight) ? v : largest;
-        });
+        return videos.reduce((best, v) => (score(v) > score(best) ? v : best));
     }
 
-    function initAudioContext(video) {
-        if (!video) return;
-
-        // CRITICAL: Ensure createMediaElementSource is only called ONCE per video element
-        if (video.dataset.yeedioAudioInitialized === "true") {
-            return;
-        }
+    function ensureAudioGraph(video) {
+        let graph = videoGraphs.get(video);
+        if (graph) return graph.gain;
 
         try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContext) return;
-
             if (!audioCtx) {
-                audioCtx = new AudioContext();
+                const Ctx = window.AudioContext || window.webkitAudioContext;
+                if (!Ctx) return null;
+                audioCtx = new Ctx();
             }
+            const source = audioCtx.createMediaElementSource(video);
+            const gain = audioCtx.createGain();
+            source.connect(gain);
+            gain.connect(audioCtx.destination);
 
-            gainNode = audioCtx.createGain();
-            sourceNode = audioCtx.createMediaElementSource(video);
+            videoGraphs.set(video, { source, gain });
 
-            sourceNode.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-            video.dataset.yeedioAudioInitialized = "true";
-
+            // Chrome may suspend an AudioContext until the page receives a gesture.
             video.addEventListener('play', () => {
-                if (audioCtx && audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
+                if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
             });
-        } catch (e) {
-            console.error("Yeedio: Failed to init AudioContext.", e);
+            document.addEventListener('click', () => {
+                if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+            }, { capture: true, once: false });
+
+            return gain;
+        } catch (err) {
+            console.warn('Yeedio: AudioContext init failed.', err);
+            return null;
         }
     }
 
-    function applySettings(speed, volume) {
-        if (!currentVideo) {
-            currentVideo = findVideo();
-        }
-
-        if (currentVideo) {
-            // Video Speed
-            if (speed !== undefined) {
-                // Strictly cap the actual HTMLMediaElement property to 16.0x to avoid buffering crashes
-                speed = Math.min(Math.max(speed, 0.25), 16.0);
-                lastSpeed = speed;
-                currentVideo.playbackRate = speed;
-
-                // Set up the YouTube Override interval
-                if (speedEnforcerInterval) clearInterval(speedEnforcerInterval);
-                speedEnforcerInterval = setInterval(() => {
-                    if (currentVideo && currentVideo.playbackRate !== lastSpeed) {
-                        currentVideo.playbackRate = lastSpeed;
-                    }
-                }, 500); // Check every 500ms to override YouTube's resets
-            }
-
-            // Volume Booster
-            if (volume !== undefined) {
-                lastVolume = volume;
-                if (volume !== 100 || currentVideo.dataset.yeedioAudioInitialized === "true") {
-                    initAudioContext(currentVideo);
-                }
-
-                if (gainNode) {
-                    // Map 0-600% to gain value 0.0 to 6.0
-                    gainNode.gain.value = volume / 100;
-                }
-            }
-
-            watchResolution(currentVideo);
-            attachVideoListeners(currentVideo);
-        }
-    }
-
-    // Ensures persistence across playlist videos
-    function attachVideoListeners(video) {
-        if (!video || video.dataset.yeedioListenersAdded === "true") return;
-
-        // Listen for ratechange to aggressively force our speed
-        video.addEventListener('ratechange', () => {
-            // If the rate was changed by something else, force it back
-            if (video.playbackRate !== lastSpeed) {
-                // Short timeout to avoid maximum call stack size in case of conflict loop
-                setTimeout(() => {
-                    if (video.playbackRate !== lastSpeed) {
-                        video.playbackRate = lastSpeed;
-                    }
-                }, 10);
-            }
-        });
-
-        // Event for when a new video loads in the same element (e.g. YouTube Playlist)
-        video.addEventListener('loadeddata', () => {
-            applySettings(lastSpeed, lastVolume);
-        });
-
-        video.dataset.yeedioListenersAdded = "true";
-    }
-
-    function notifyResolution(video) {
+    function applySpeed(video, speed) {
+        const s = clamp(speed, SPEED_MIN, SPEED_MAX);
+        settings.speed = s;
         if (!video) return;
-        if (video.videoWidth > 0 && video.videoHeight > 0) {
-            chrome.runtime.sendMessage({
-                type: 'RESOLUTION_CHANGED',
-                width: video.videoWidth,
-                height: video.videoHeight
-            }).catch(() => { });
+        settingRateProgrammatically = true;
+        try {
+            video.playbackRate = s;
+        } finally {
+            setTimeout(() => { settingRateProgrammatically = false; }, 0);
         }
+        updateEnforcer();
+    }
+
+    function applyVolume(video, volume) {
+        settings.volume = clamp(volume, 0, VOLUME_MAX);
+        if (!video) return;
+        // Keep using the same graph after a video has been routed through Web Audio.
+        if (settings.volume !== 100 || videoGraphs.has(video)) {
+            const gain = ensureAudioGraph(video);
+            if (gain) gain.gain.value = settings.volume / 100;
+        }
+    }
+
+    // Some players reset playbackRate when they rebuild their controls.
+    function updateEnforcer() {
+        const needsEnforcement = settings.speed !== 1.0;
+        if (needsEnforcement && !enforceTimer) {
+            enforceTimer = setInterval(() => {
+                const v = findVideo();
+                if (v && Math.abs(v.playbackRate - settings.speed) > 0.001) {
+                    applySpeed(v, settings.speed);
+                }
+            }, 1000);
+        } else if (!needsEnforcement && enforceTimer) {
+            clearInterval(enforceTimer);
+            enforceTimer = null;
+        }
+    }
+
+    function attachVideoListeners(video) {
+        if (!video || video.dataset.yeedioWired === 'true') return;
+
+        video.addEventListener('ratechange', () => {
+            if (settingRateProgrammatically) return;
+            if (settings.speed !== 1.0 && Math.abs(video.playbackRate - settings.speed) > 0.001) {
+                applySpeed(video, settings.speed);
+            }
+        });
+
+        // Some sites reuse the same video element between playlist items.
+        video.addEventListener('loadeddata', () => applyAll());
+        video.addEventListener('loadedmetadata', () => notifyResolution());
+
+        video.dataset.yeedioWired = 'true';
     }
 
     function watchResolution(video) {
-        if (!video || video.dataset.yeedioResolutionWatcher === "true") return;
-
-        const notify = () => notifyResolution(video);
-
-        video.addEventListener('loadedmetadata', notify);
-        video.addEventListener('resize', notify);
-        video.dataset.yeedioResolutionWatcher = "true";
+        if (!video || video.dataset.yeedioResWatch === 'true') return;
+        video.addEventListener('resize', () => notifyResolution());
+        video.dataset.yeedioResWatch = 'true';
     }
 
-    function getResolution(video) {
-        if (video && video.videoWidth && video.videoHeight) {
-            return {
-                width: video.videoWidth,
-                height: video.videoHeight
-            };
+    function getResolution() {
+        const v = activeVideo || findVideo();
+        return v && v.videoWidth > 0
+            ? { width: v.videoWidth, height: v.videoHeight }
+            : null;
+    }
+
+    function applyAll() {
+        activeVideo = findVideo();
+        if (!activeVideo) return;
+        applySpeed(activeVideo, settings.speed);
+        applyVolume(activeVideo, settings.volume);
+        attachVideoListeners(activeVideo);
+        watchResolution(activeVideo);
+        notifyResolution();
+    }
+
+    function notifyResolution() {
+        const res = getResolution();
+        if (res) {
+            chrome.runtime.sendMessage({ type: 'RESOLUTION_CHANGED', ...res }).catch(() => {});
         }
-        return null;
     }
 
-    // Auto-apply state on page load or when traversing a SPA (like YouTube)
-    function autoApplyFromStorage() {
-        chrome.storage.local.get(['speed', 'volume', 'globalDefaultSpeed', 'globalDefaultVolume'], (data) => {
-            const speedToApply = data.speed !== undefined ? data.speed : (data.globalDefaultSpeed || 1.0);
-            const volumeToApply = data.volume !== undefined ? data.volume : (data.globalDefaultVolume || 100);
-            applySettings(speedToApply, volumeToApply);
-        });
-    }
-
-    // ROBUST RESOLUTION FINDER: ONLY RESPOND IF WE HAVE THE VIDEO
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        currentVideo = findVideo();
+        if (request.type === 'GET_STATE') {
+            const video = findVideo();
+            if (!video) return false; // let the frame with the video answer
+            activeVideo = video;
+            sendResponse({
+                speed: settings.speed,
+                volume: settings.volume,
+                resolution: getResolution()
+            });
+            return false;
+        }
 
         if (request.type === 'UPDATE_SETTINGS') {
-            if (!currentVideo) return false; // Ignore message in frames without video to avoid collisions
-
-            applySettings(request.speed, request.volume);
-            sendResponse({
-                success: true,
-                resolution: getResolution(currentVideo)
-            });
+            const video = findVideo();
+            if (!video) return false;
+            activeVideo = video;
+            if (request.speed !== undefined) applySpeed(video, request.speed);
+            if (request.volume !== undefined) applyVolume(video, request.volume);
+            attachVideoListeners(video);
+            watchResolution(video);
+            sendResponse({ success: true, resolution: getResolution() });
             return false;
         }
-        else if (request.type === 'GET_STATE') {
-            if (!currentVideo) return false; // Important: Return false immediately to allow the frame WITH the video to respond
 
-            sendResponse({
-                speed: lastSpeed, // return enforced speed instead of volatile playbackRate
-                volume: lastVolume,
-                resolution: getResolution(currentVideo)
-            });
+        if (request.type === 'ADJUST') {
+            const video = findVideo();
+            if (!video) return false;
+            activeVideo = video;
+            if (request.speedDelta) {
+                applySpeed(video, Math.round((settings.speed + request.speedDelta) * 100) / 100);
+            }
+            if (request.volumeDelta) {
+                applyVolume(video, Math.round(settings.volume + request.volumeDelta));
+            }
+            sendResponse({ success: true, speed: settings.speed, volume: settings.volume });
             return false;
         }
+
         return false;
     });
 
-    // Run auto-apply instantly upon injection
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", autoApplyFromStorage);
-    } else {
-        autoApplyFromStorage();
+    function restoreSettings(cb) {
+        chrome.storage.local.get(['speed', 'volume'], (data) => {
+            settings.speed = clamp(data.speed ?? 1.0, SPEED_MIN, SPEED_MAX);
+            settings.volume = clamp(data.volume ?? 100, 0, VOLUME_MAX);
+            if (cb) cb();
+        });
     }
 
-    // Set up a MutationObserver to watch for new <video> elements being added to the DOM 
-    // This handles SPAs where video elements are destroyed and recreated (like navigating to a new YouTube page)
-    const observer = new MutationObserver((mutations) => {
-        let videoAdded = false;
-        for (const mut of mutations) {
-            if (mut.addedNodes.length > 0) {
-                for (const node of mut.addedNodes) {
-                    if (node.nodeName === 'VIDEO' || (node.querySelectorAll && node.querySelectorAll('video').length > 0)) {
-                        videoAdded = true;
-                        break;
-                    }
-                }
+    function init() {
+        restoreSettings(applyAll);
+        updateEnforcer();
+    }
+
+    // YouTube's player can change without a full page load.
+    window.addEventListener('yt-navigate-finish', () => setTimeout(init, 300));
+
+    // Handle video elements added by other single-page applications.
+    const observer = new MutationObserver(() => {
+        clearTimeout(observer._t);
+        observer._t = setTimeout(() => {
+            const v = findVideo();
+            if (v && v !== activeVideo) {
+                restoreSettings(applyAll);
+            } else if (v && Math.abs(v.playbackRate - settings.speed) > 0.001) {
+                applySpeed(v, settings.speed);
             }
-            if (videoAdded) break;
-        }
-        if (videoAdded) {
-            setTimeout(() => {
-                currentVideo = findVideo();
-                if (currentVideo) autoApplyFromStorage();
-            }, 500); // Give it a moment to initialize
-        }
+        }, 300);
     });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
 
-    observer.observe(document.body, { childList: true, subtree: true });
-
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();

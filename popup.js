@@ -1,204 +1,208 @@
+// popup.js — Yeedio v2
 document.addEventListener('DOMContentLoaded', () => {
     const speedSlider = document.getElementById('speed-slider');
     const speedInput = document.getElementById('speed-input');
     const speedDown = document.getElementById('speed-down');
     const speedUp = document.getElementById('speed-up');
-    const speedReset = document.getElementById('resetSpeed');
+    const speedPresets = document.getElementById('speed-presets');
 
     const volumeSlider = document.getElementById('volume-slider');
     const volumeInput = document.getElementById('volume-input');
-    const volumeReset = document.getElementById('resetVolume');
+    const volumePresets = document.getElementById('volume-presets');
 
     const statusDisplay = document.getElementById('status');
     const activeTabTitle = document.getElementById('active-tab-title');
     const activeTabIcon = document.getElementById('active-tab-icon');
+    const openOptions = document.getElementById('open-options');
 
-    // Fetch Active Tab Info for "Now Playing" card
+    const SPEED_MIN = 0.25;
+    const SPEED_MAX = 16.0;
+    const VOLUME_MAX = 600;
+
+    let applyTimer = null;
+    let currentTabId = null;
+
+    openOptions.addEventListener('click', () => chrome.runtime.openOptionsPage());
+
+    function paintFill(slider) {
+        const min = parseFloat(slider.min);
+        const max = parseFloat(slider.max);
+        const pct = ((parseFloat(slider.value) - min) / (max - min)) * 100;
+        slider.style.setProperty('--fill', pct + '%');
+    }
+
+    function setStatus(text, kind) {
+        statusDisplay.textContent = text;
+        statusDisplay.classList.remove('ok', 'warn', 'err');
+        if (kind) statusDisplay.classList.add(kind);
+    }
+
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs.length === 0) return;
-        const currentTab = tabs[0];
+        if (!tabs.length) return;
+        currentTabId = tabs[0].id;
+        const tab = tabs[0];
 
-        if (currentTab.title) {
-            activeTabTitle.textContent = currentTab.title;
-            activeTabTitle.title = currentTab.title;
+        if (tab.title) {
+            activeTabTitle.textContent = tab.title;
+            activeTabTitle.title = tab.title;
         } else {
-            activeTabTitle.textContent = "Unknown Tab";
+            activeTabTitle.textContent = 'Unknown Tab';
         }
 
-        if (currentTab.favIconUrl) {
-            activeTabIcon.src = currentTab.favIconUrl;
-            activeTabIcon.style.display = 'block';
-        } else {
-            activeTabIcon.style.display = 'none';
+        if (tab.favIconUrl && /^https?:/.test(tab.favIconUrl)) {
+            activeTabIcon.src = tab.favIconUrl;
+            activeTabIcon.hidden = false;
+            activeTabIcon.onerror = () => { activeTabIcon.hidden = true; };
         }
-    });
 
-    /**
-     * Ensures `content.js` is securely injected into the active tab exactly when needed.
-     */
-    function runWithContentScript(tabId, callback) {
-        // Test if script is already present by sending a dummy GET_STATE
-        chrome.tabs.sendMessage(tabId, { type: 'GET_STATE' }, (response) => {
-            if (chrome.runtime.lastError) {
-                // Not injected yet, perform dynamic injection
-                chrome.scripting.executeScript({
-                    target: { tabId: tabId, allFrames: true },
-                    files: ['content.js']
-                }, () => {
-                    if (chrome.runtime.lastError) {
-                        console.warn("Yeedio: Injection failed.", chrome.runtime.lastError);
-                        callback(false);
-                    } else {
-                        // Allow brief moment for listeners to securely attach
-                        setTimeout(() => callback(true), 50);
-                    }
-                });
-            } else {
-                // Already injected
-                callback(true);
+        ensureContentScript(currentTabId, (ok) => {
+            if (!ok) {
+                setStatus('Cannot access this page', 'err');
+                return;
             }
-        });
-    }
-
-    function syncSpeed(value) {
-        let val = parseFloat(value);
-        if (isNaN(val)) val = 1.0;
-        if (val < 0.25) val = 0.25;
-        if (val > 16.0) val = 16.0;
-
-        speedSlider.value = val;
-        speedInput.value = val;
-        saveAndApply();
-    }
-
-    function syncVolume(value) {
-        let val = parseInt(value, 10);
-        if (isNaN(val)) val = 100;
-        if (val < 0) val = 0;
-        if (val > 600) val = 600;
-
-        volumeSlider.value = val;
-        volumeInput.value = val;
-        saveAndApply();
-    }
-
-    speedSlider.addEventListener('input', (e) => syncSpeed(e.target.value));
-    speedInput.addEventListener('change', (e) => syncSpeed(e.target.value));
-    speedDown.addEventListener('click', () => syncSpeed(parseFloat(speedSlider.value) - 0.25));
-    speedUp.addEventListener('click', () => syncSpeed(parseFloat(speedSlider.value) + 0.25));
-    speedReset.addEventListener('click', () => {
-        chrome.storage.local.get(['globalDefaultSpeed'], (data) => {
-            syncSpeed(data.globalDefaultSpeed || 1.0);
+            chrome.tabs.sendMessage(currentTabId, { type: 'GET_STATE' }, (response) => {
+                if (chrome.runtime.lastError || !response) {
+                    setStatus('No video on this page', 'warn');
+                    return;
+                }
+                if (response.speed !== undefined) updateSpeedUI(clampSpeed(response.speed));
+                if (response.volume !== undefined) updateVolumeUI(clampVolume(response.volume));
+                showResolution(response.resolution);
+            });
         });
     });
 
-    volumeSlider.addEventListener('input', (e) => syncVolume(e.target.value));
-    volumeInput.addEventListener('change', (e) => syncVolume(e.target.value));
-    volumeReset.addEventListener('click', () => {
-        chrome.storage.local.get(['globalDefaultVolume'], (data) => {
-            syncVolume(data.globalDefaultVolume || 100);
+    // Tabs opened before an install or update may not have the content script yet.
+    function ensureContentScript(tabId, callback) {
+        chrome.tabs.sendMessage(tabId, { type: 'GET_STATE' }, (response) => {
+            if (!chrome.runtime.lastError && response) {
+                callback(true);
+                return;
+            }
+            chrome.scripting.executeScript(
+                { target: { tabId, allFrames: true }, files: ['content.js'] },
+                () => {
+                    if (chrome.runtime.lastError) {
+                        callback(false);
+                        return;
+                    }
+                    setTimeout(() => callback(true), 60);
+                }
+            );
         });
-    });
+    }
+
+    function clampSpeed(val) {
+        val = parseFloat(val);
+        if (isNaN(val)) return 1.0;
+        return Math.min(Math.max(Math.round(val * 100) / 100, SPEED_MIN), SPEED_MAX);
+    }
+
+    function clampVolume(val) {
+        val = parseInt(val, 10);
+        if (isNaN(val)) return 100;
+        return Math.min(Math.max(val, 0), VOLUME_MAX);
+    }
+
+    function updateSpeedUI(v) {
+        speedSlider.value = v;
+        speedInput.value = v.toFixed(2);
+        paintFill(speedSlider);
+        speedPresets.querySelectorAll('.chip').forEach((btn) => {
+            btn.classList.toggle('active', parseFloat(btn.dataset.speed) === v);
+        });
+    }
+
+    function updateVolumeUI(v) {
+        volumeSlider.value = v;
+        volumeInput.value = v;
+        paintFill(volumeSlider);
+        volumePresets.querySelectorAll('.chip').forEach((btn) => {
+            btn.classList.toggle('active', parseInt(btn.dataset.volume, 10) === v);
+        });
+    }
+
+    function scheduleApply() {
+        clearTimeout(applyTimer);
+        applyTimer = setTimeout(saveAndApply, 120);
+    }
 
     function saveAndApply() {
-        const speed = parseFloat(speedSlider.value);
-        const volume = parseInt(volumeSlider.value, 10);
+        const speed = clampSpeed(speedSlider.value);
+        const volume = clampVolume(volumeSlider.value);
+        updateSpeedUI(speed);
+        updateVolumeUI(volume);
 
         chrome.storage.local.set({ speed, volume });
 
-        sendMessageToContentScript({
-            type: 'UPDATE_SETTINGS',
-            speed: speed,
-            volume: volume
-        });
-    }
-
-    function sendMessageToContentScript(message) {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            if (tabs.length === 0) return;
-            const tabId = tabs[0].id;
-
-            runWithContentScript(tabId, (success) => {
-                if (!success) {
-                    updateStatusDisplay("CANNOT ACCESS THIS PAGE.");
-                    return;
-                }
-                chrome.tabs.sendMessage(tabId, message, (response) => {
-                    if (chrome.runtime.lastError || !response) {
-                        updateStatusDisplay("No video player found.");
-                        return;
-                    }
-                    if (response && response.resolution) {
-                        updateStatusDisplay(`Current Resolution: ${response.resolution.width}x${response.resolution.height}`);
-                    } else if (response && response.error) {
-                        updateStatusDisplay(response.error);
-                    }
-                });
-            });
-        });
-    }
-
-    function updateStatusDisplay(text) {
-        statusDisplay.textContent = text;
-    }
-
-    function loadFallbackStorage() {
-        chrome.storage.local.get(['speed', 'volume', 'globalDefaultSpeed', 'globalDefaultVolume'], (data) => {
-            const fallbackSpeed = data.speed !== undefined ? data.speed : (data.globalDefaultSpeed || 1.0);
-            const fallbackVol = data.volume !== undefined ? data.volume : (data.globalDefaultVolume || 100);
-
-            speedSlider.value = fallbackSpeed;
-            speedInput.value = fallbackSpeed;
-            volumeSlider.value = fallbackVol;
-            volumeInput.value = fallbackVol;
-        });
-    }
-
-    // Initialize Popup state upon user click
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs.length === 0) return;
-        const tabId = tabs[0].id;
-
-        runWithContentScript(tabId, (success) => {
-            if (!success) {
-                // Completely blocked (e.g., chrome://)
-                loadFallbackStorage();
-                updateStatusDisplay("CANNOT ACCESS THIS PAGE.");
-                return;
-            }
-
-            // Secure fetch from the single frame that holds the video!
-            chrome.tabs.sendMessage(tabId, { type: 'GET_STATE' }, (response) => {
+        if (!currentTabId) return;
+        chrome.tabs.sendMessage(
+            currentTabId,
+            { type: 'UPDATE_SETTINGS', speed, volume },
+            (response) => {
                 if (chrome.runtime.lastError || !response) {
-                    // No frames successfully returned a response = No video
-                    loadFallbackStorage();
-                    updateStatusDisplay("No video player found.");
+                    setStatus('No video on this page', 'warn');
                     return;
                 }
+                showResolution(response.resolution);
+            }
+        );
+    }
 
-                if (response.speed !== undefined) {
-                    speedSlider.value = response.speed;
-                    speedInput.value = response.speed;
-                }
-                if (response.volume !== undefined) {
-                    volumeSlider.value = response.volume;
-                    volumeInput.value = response.volume;
-                }
+    function showResolution(resolution) {
+        if (resolution && resolution.width > 0) {
+            setStatus(`Resolution: ${resolution.width}\u00D7${resolution.height}`, 'ok');
+        } else {
+            setStatus('Detecting resolution\u2026', 'warn');
+        }
+    }
 
-                if (response.resolution && response.resolution.width > 0) {
-                    updateStatusDisplay(`Current Resolution: ${response.resolution.width}x${response.resolution.height}`);
-                } else {
-                    updateStatusDisplay("Loading Resolution...");
-                }
-            });
-        });
+    speedSlider.addEventListener('input', () => {
+        updateSpeedUI(clampSpeed(speedSlider.value));
+        scheduleApply();
+    });
+    speedInput.addEventListener('change', () => {
+        updateSpeedUI(clampSpeed(speedInput.value));
+        scheduleApply();
+    });
+    speedDown.addEventListener('click', () => {
+        updateSpeedUI(clampSpeed(parseFloat(speedSlider.value) - 0.25));
+        scheduleApply();
+    });
+    speedUp.addEventListener('click', () => {
+        updateSpeedUI(clampSpeed(parseFloat(speedSlider.value) + 0.25));
+        scheduleApply();
+    });
+    speedPresets.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        updateSpeedUI(clampSpeed(btn.dataset.speed));
+        scheduleApply();
     });
 
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        if (request.type === 'RESOLUTION_CHANGED') {
-            if (request.width > 0) {
-                updateStatusDisplay(`Current Resolution: ${request.width}x${request.height}`);
-            }
+    volumeSlider.addEventListener('input', () => {
+        updateVolumeUI(clampVolume(volumeSlider.value));
+        scheduleApply();
+    });
+    volumeInput.addEventListener('change', () => {
+        updateVolumeUI(clampVolume(volumeInput.value));
+        scheduleApply();
+    });
+    volumePresets.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        updateVolumeUI(clampVolume(btn.dataset.volume));
+        scheduleApply();
+    });
+
+    chrome.storage.local.get(['speed', 'volume'], (data) => {
+        updateSpeedUI(clampSpeed(data.speed ?? 1.0));
+        updateVolumeUI(clampVolume(data.volume ?? 100));
+    });
+
+    chrome.runtime.onMessage.addListener((request, sender) => {
+        if (sender.tab?.id === currentTabId && request.type === 'RESOLUTION_CHANGED' && request.width > 0) {
+            showResolution(request);
         }
     });
 });

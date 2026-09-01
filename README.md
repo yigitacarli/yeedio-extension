@@ -1,28 +1,44 @@
-![Yeedio Preview](banner.png)
-# 🎧 Yeedio: Video Speed & Volume Booster
+# Yeedio
 
-Take full control of your web media experience! Yeedio is a lightweight, all-in-one Chrome extension that allows you to boost audio volume and control video playback speed seamlessly.
+Yeedio is a Chrome extension for changing HTML5 video speed and boosting volume. It works on sites that use a standard `<video>` element, including videos embedded in iframes.
 
-## 🚀 Key Features
-* **Volume Booster:** Amplify the audio of any tab up to **600%** beyond the system maximum.
-* **Video Speed Controller:** Speed up or slow down videos with precision (from **0.25x to 16x**).
-* **Now Playing Dashboard:** See exactly what's playing directly inside the clean, modern popup.
-* **Live Resolution Monitor:** Instantly check the true playback resolution of the current video.
-* **Glassmorphism UI:** A beautifully designed, transparent dark theme that doesn't drain your browser's resources.
+![Yeedio popup](banner.png)
 
-## 🛠️ Installation
-Currently under review in the Chrome Web Store. 
-*Once published, the store link will be added here.*
+## What it does
 
-### Manual Installation (Developer Mode)
-1. Clone or download this repository as a ZIP file.
-2. Unzip the file to a folder on your computer.
-3. Open Google Chrome and go to `chrome://extensions/`.
-4. Enable **"Developer mode"** in the top right corner.
-5. Click **"Load unpacked"** and select the folder you unzipped.
+- Changes playback speed from 0.25x to 16x.
+- Boosts volume up to 600% with the Web Audio API.
+- Shows the active video's native resolution.
+- Remembers the last speed and volume values.
+- Provides keyboard shortcuts for speed and volume changes.
 
-## 🔒 Privacy
-Yeedio respects your privacy. It operates entirely locally on your machine. We do not collect, store, or transmit any personal data or browsing history.
+Yeedio cannot run on Chrome's internal pages or the Chrome Web Store. A few sites use custom or protected media players that may not work with Web Audio volume boosting.
 
-## 📄 License
-Distributed under the MIT License.
+## Install from source
+
+1. Download this repository and extract it, or clone it with Git.
+2. Open `chrome://extensions` in Chrome.
+3. Turn on **Developer mode**.
+4. Select **Load unpacked** and choose the repository folder.
+
+If an older unpacked copy is already installed, check its source path on `chrome://extensions`. When it points to this same folder, use **Reload**. When it points somewhere else, remove the old copy before loading this folder to avoid installing Yeedio twice.
+
+Chrome disables file-page access by default. To use Yeedio with local video files, open the extension's details and enable **Allow access to file URLs**.
+
+## Shortcuts
+
+| Action | Default shortcut |
+| --- | --- |
+| Open Yeedio | `Alt+Shift+Y` |
+| Decrease speed | `Alt+Shift+,` |
+| Increase speed | `Alt+Shift+.` |
+
+Volume shortcuts are available but unassigned by default. All shortcuts can be changed at `chrome://extensions/shortcuts`.
+
+## Privacy
+
+Yeedio has no analytics, account system, or server. Settings stay in Chrome's local extension storage. The extension requests access to web pages so it can find and control video elements; it does not collect or upload browsing history. See [PRIVACY.md](PRIVACY.md) for the full policy.
+
+## License
+
+[MIT](LICENSE)

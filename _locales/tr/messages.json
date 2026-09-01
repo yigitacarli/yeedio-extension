@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Video Hızı Kontrolü & Ses Yükseltici",
+        "description": "Eklentinin adı."
+    },
+    "extensionDescription": {
+        "message": "Video hızını 16x'e kadar, sesi %600'e kadar kontrol et. Basit, hızlı, hafif.",
+        "description": "Eklentinin kısa açıklaması (en fazla 132 karakter)."
+    }
+}

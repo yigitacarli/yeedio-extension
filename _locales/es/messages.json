@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Control de Velocidad y Refuerzo de Volumen",
+        "description": "El nombre de la extensión."
+    },
+    "extensionDescription": {
+        "message": "Controla la velocidad del vídeo hasta 16x y sube el volumen hasta 600%. Simple, rápido, ligero.",
+        "description": "Una breve descripción de la extensión (máx. 132 caracteres)."
+    }
+}

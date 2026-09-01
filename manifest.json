@@ -1,9 +1,12 @@
 {
     "manifest_version": 3,
     "name": "__MSG_extensionName__",
-    "version": "1.1",
+    "short_name": "Yeedio",
+    "version": "2.1.2",
     "description": "__MSG_extensionDescription__",
     "default_locale": "en",
+    "minimum_chrome_version": "102",
+    "homepage_url": "https://github.com/yigitacarli/Yeedio-Chrome-Extension",
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
@@ -14,6 +17,24 @@
         "scripting",
         "storage"
     ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*",
+                "file:///*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "all_frames": true,
+            "run_at": "document_idle",
+            "match_about_blank": true
+        }
+    ],
     "action": {
         "default_popup": "popup.html",
         "default_title": "__MSG_extensionName__",
@@ -21,6 +42,31 @@
             "16": "icons/icon16.png",
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
+        }
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Alt+Shift+Y"
+            }
+        },
+        "increase-speed": {
+            "suggested_key": {
+                "default": "Alt+Shift+Period"
+            },
+            "description": "Increase video speed (+0.25x)"
+        },
+        "decrease-speed": {
+            "suggested_key": {
+                "default": "Alt+Shift+Comma"
+            },
+            "description": "Decrease video speed (-0.25x)"
+        },
+        "boost-volume-up": {
+            "description": "Increase volume boost (+10%)"
+        },
+        "boost-volume-down": {
+            "description": "Decrease volume boost (-10%)"
         }
     },
     "options_page": "options.html"

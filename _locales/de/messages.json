@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "Yeedio: Videogeschwindigkeit & Lautstärke-Booster",
+        "description": "Der Name der Erweiterung."
+    },
+    "extensionDescription": {
+        "message": "Videogeschwindigkeit bis 16x und Lautstärke bis 600% steuern. Einfach, schnell, leicht.",
+        "description": "Eine kurze Beschreibung der Erweiterung (max. 132 Zeichen)."
+    }
+}

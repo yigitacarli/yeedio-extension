@@ -4,13 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveBtn = document.getElementById('save-btn');
     const statusDiv = document.getElementById('status');
 
-    // Load saved settings
-    chrome.storage.local.get(['globalDefaultSpeed', 'globalDefaultVolume'], (data) => {
-        if (data.globalDefaultSpeed !== undefined) {
-            defaultSpeedInput.value = data.globalDefaultSpeed;
+    chrome.storage.local.get(['speed', 'volume'], (data) => {
+        if (data.speed !== undefined) {
+            defaultSpeedInput.value = data.speed;
         }
-        if (data.globalDefaultVolume !== undefined) {
-            defaultVolumeInput.value = data.globalDefaultVolume;
+        if (data.volume !== undefined) {
+            defaultVolumeInput.value = data.volume;
         }
     });
 
@@ -28,13 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         defaultVolumeInput.value = volume;
 
         chrome.storage.local.set({
-            globalDefaultSpeed: speed,
-            globalDefaultVolume: volume,
-            // Pre-seed current state to help initialization on new tabs
-            speed: speed,
-            volume: volume
+            speed,
+            volume
         }, () => {
-            statusDiv.textContent = 'Preferences saved successfully!';
+            statusDiv.textContent = 'Settings saved.';
             setTimeout(() => { statusDiv.textContent = ''; }, 2000);
         });
     });
