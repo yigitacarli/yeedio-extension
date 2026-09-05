@@ -8,4 +8,4 @@ The extension stores the selected speed and volume values in Chrome's local exte
 
 Yeedio needs access to pages you visit in order to find HTML5 video elements, change their playback speed and audio gain, and display the active video's title and resolution. Page contents and browsing history are not recorded or uploaded.
 
-Questions about this policy can be opened as an issue in the [Yeedio GitHub repository](https://github.com/yigitacarli/Yeedio-Chrome-Extension/issues).
+Questions about this policy can be opened as an issue in the [Yeedio GitHub repository](https://github.com/yigitacarli/yeedio-extension/issues).

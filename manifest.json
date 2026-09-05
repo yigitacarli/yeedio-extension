@@ -6,7 +6,7 @@
     "description": "__MSG_extensionDescription__",
     "default_locale": "en",
     "minimum_chrome_version": "102",
-    "homepage_url": "https://github.com/yigitacarli/Yeedio-Chrome-Extension",
+    "homepage_url": "https://github.com/yigitacarli/yeedio-extension",
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",

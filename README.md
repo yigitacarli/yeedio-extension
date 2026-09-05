@@ -2,6 +2,8 @@
 
 Yeedio is a Chrome extension for changing HTML5 video speed and boosting volume. It works on sites that use a standard `<video>` element, including videos embedded in iframes.
 
+[Install Yeedio from the Chrome Web Store](https://chromewebstore.google.com/detail/yeedio-video-speed-contro/mghgmbkkajimhejbkkbbodomeelljloc)
+
 ![Yeedio popup](banner.png)
 
 ## What it does
