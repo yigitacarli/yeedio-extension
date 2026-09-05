@@ -149,9 +149,23 @@ const assets = [
   },
   {
     name: 'promo-small-440x280.png', width: 440, height: 280,
-    body: `${logo(32,58,74)}<text x="128" y="92" font-family="Segoe UI,Arial,sans-serif" font-size="35" font-weight="850" fill="${C.ink}">Yeedio</text>
-      <text x="34" y="174" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="800" fill="${C.ink}">Own the pace.</text><text x="34" y="209" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="800" fill="${C.ink}">Hear every detail.</text>
-      <rect x="32" y="234" width="158" height="8" rx="4" fill="${C.acid}"/>`, label: 'VIDEO CONTROL'
+    body: `<rect width="440" height="280" fill="${C.ink}"/>
+      <circle cx="414" cy="-12" r="142" fill="${C.purple}" opacity=".92"/>
+      <rect x="26" y="24" width="68" height="68" rx="18" fill="${C.white}"/>
+      ${logo(32,30,56)}
+      <text x="112" y="61" font-family="Segoe UI,Arial,sans-serif" font-size="32" font-weight="850" fill="${C.white}">Yeedio</text>
+      <text x="114" y="84" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="800" letter-spacing="2" fill="${C.white}" opacity=".55">VIDEO CONTROL</text>
+      <g transform="translate(26 122)">
+        <rect width="184" height="104" rx="20" fill="${C.white}"/>
+        <text x="18" y="58" font-family="Consolas,monospace" font-size="46" font-weight="700" fill="${C.ink}">16×</text>
+        <text x="20" y="84" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="1.8" fill="${C.muted}">SPEED</text>
+      </g>
+      <g transform="translate(224 122)">
+        <rect width="190" height="104" rx="20" fill="url(#purpleGlow)"/>
+        <text x="18" y="58" font-family="Consolas,monospace" font-size="43" font-weight="700" fill="${C.white}">600%</text>
+        <text x="20" y="84" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="1.8" fill="${C.white}" opacity=".7">VOLUME BOOST</text>
+      </g>
+      <rect x="26" y="249" width="388" height="7" rx="4" fill="${C.acid}"/>`, label: ''
   },
   {
     name: 'promo-marquee-1400x560.png', width: 1400, height: 560,
