@@ -49,3 +49,5 @@ Yeedio has no analytics, account system, or server. Settings stay in Chrome's lo
 ## License
 
 [MIT](LICENSE)
+
+Release history is available in [CHANGELOG.md](CHANGELOG.md).
