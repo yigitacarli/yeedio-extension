@@ -1,0 +1,7 @@
+Some videos are too slow. Others are too quiet. Yeedio puts speed and volume controls in one small popup.
+
+Set playback anywhere from 0.25x to 16x, use a preset, or type an exact value. Volume can be raised up to 600% for quiet videos. Yeedio also remembers your last settings, shows the video's native resolution, and supports keyboard shortcuts. The popup and settings page are available in 19 languages.
+
+Yeedio works on most sites that use standard HTML5 video, including many embedded players. Chrome pages, the Chrome Web Store, and some protected or custom players can't be controlled. Very high volume may distort the sound, so increase it gradually.
+
+There are no accounts, ads, analytics, or external servers. Speed and volume settings stay in Chrome's local extension storage. Yeedio doesn't collect browsing history or upload page content.

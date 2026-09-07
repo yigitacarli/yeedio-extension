@@ -1,0 +1,7 @@
+Bazı videolar fazla yavaş, bazıları ise fazlasıyla sessiz. Yeedio, hız ve ses kontrollerini küçük bir açılır pencerede bir araya getirir.
+
+Oynatma hızını 0,25x ile 16x arasında ayarlayabilir, hazır değerlerden birini seçebilir veya istediğiniz değeri elle girebilirsiniz. Sessiz videolarda sesi %600'e kadar yükseltebilirsiniz. Yeedio son ayarlarınızı hatırlar, videonun gerçek çözünürlüğünü gösterir ve klavye kısayollarını destekler.
+
+Standart HTML5 video kullanan çoğu sitede ve birçok gömülü oynatıcıda çalışır. Chrome sayfaları, Chrome Web Mağazası ve bazı korumalı ya da özel oynatıcılar kontrol edilemez. Yüksek ses seviyeleri bozulmaya neden olabilir.
+
+Yeedio'da hesap, reklam, analiz aracı veya harici sunucu bulunmaz. Hız ve ses ayarları Chrome'un yerel eklenti depolamasında tutulur. Tarama geçmişi veya sayfa içeriği toplanmaz ve yüklenmez.
